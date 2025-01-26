@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav>
+        <div class="logo">Portfolio</div>
+        <ul class="nav-links">
+            <li><a href="#home" class="active">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#work">Work</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1 class="animate-text">Hi,</h1>
+            <h2 class="animate-text">I'm <span class="highlight">Your Name</span></h2>
+            <h3 class="animate-text">Web Designer</h3>
+            <button class="contact-btn animate-text" onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'})">Contact</button>
+            <div class="social-links animate-text">
+                <a href="#" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="#" target="_blank"><i class="fab fa-behance"></i></a>
+                <a href="#" target="_blank"><i class="fab fa-github"></i></a>
+            </div>
+        </div>
+        <div class="hero-image animate-image">
+            <div class="image-container">
+                <img src="profile-image.jpg" alt="Profile Image">
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="about">
+        <h2 class="section-title animate-text">About Me</h2>
+        <div class="about-content animate-text">
+            <p>I am a passionate web designer with a keen eye for detail and a love for creating beautiful, functional websites. With expertise in modern web technologies and design principles, I help bring ideas to life through creative and intuitive user interfaces.</p>
+        </div>
+    </section>
+
+    <section id="skills" class="skills">
+        <h2 class="section-title animate-text">Skills</h2>
+        <div class="skills-content">
+            <div class="skill-card animate-text">
+                <i class="fas fa-code"></i>
+                <h3>Web Development</h3>
+                <p>HTML, CSS, JavaScript</p>
+            </div>
+            <div class="skill-card animate-text">
+                <i class="fas fa-paint-brush"></i>
+                <h3>Design</h3>
+                <p>UI/UX, Figma, Adobe XD</p>
+            </div>
+            <div class="skill-card animate-text">
+                <i class="fas fa-mobile-alt"></i>
+                <h3>Responsive Design</h3>
+                <p>Mobile-First Approach</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="work" class="work">
+        <h2 class="section-title animate-text">My Work</h2>
+        <div class="work-grid">
+            <div class="work-card animate-text">
+                <img src="project1.jpg" alt="Project 1">
+                <h3>Project 1</h3>
+                <p>Web Design</p>
+            </div>
+            <div class="work-card animate-text">
+                <img src="project2.jpg" alt="Project 2">
+                <h3>Project 2</h3>
+                <p>UI/UX Design</p>
+            </div>
+            <div class="work-card animate-text">
+                <img src="project3.jpg" alt="Project 3">
+                <h3>Project 3</h3>
+                <p>Web Development</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact">
+        <h2 class="section-title animate-text">Contact Me</h2>
+        <div class="contact-content">
+            <form class="contact-form animate-text">
+                <input type="text" placeholder="Your Name" required>
+                <input type="email" placeholder="Your Email" required>
+                <textarea placeholder="Your Message" required></textarea>
+                <button type="submit" class="contact-btn">Send Message</button>
+            </form>
+        </div>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+</html>
