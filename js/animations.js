@@ -254,6 +254,46 @@ document.getElementById('claimGift').addEventListener('click', function() {
     }, 1000);
 });
 
+// 3D Rotating Gallery Controls
+document.addEventListener('DOMContentLoaded', function() {
+    const gallery = document.querySelector('.gallery');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    let rotationDegree = 0;
+
+    function rotateGallery(direction) {
+        rotationDegree += direction * 45; // 45 degrees per image
+        gallery.style.transform = `rotateY(${rotationDegree}deg)`;
+    }
+
+    if (prevBtn && nextBtn) {
+        prevBtn.addEventListener('click', () => {
+            rotateGallery(1);
+        });
+
+        nextBtn.addEventListener('click', () => {
+            rotateGallery(-1);
+        });
+    }
+
+    // Add touch support for mobile devices
+    let touchStartX = 0;
+    let touchEndX = 0;
+
+    gallery.addEventListener('touchstart', (e) => {
+        touchStartX = e.changedTouches[0].screenX;
+    });
+
+    gallery.addEventListener('touchend', (e) => {
+        touchEndX = e.changedTouches[0].screenX;
+        if (touchEndX < touchStartX) {
+            rotateGallery(-1); // Swipe left
+        } else if (touchEndX > touchStartX) {
+            rotateGallery(1); // Swipe right
+        }
+    });
+});
+
 // Add CSS animations
 const style = document.createElement('style');
 style.textContent = `
