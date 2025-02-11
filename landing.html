@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valentine's Surprise</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: Arial, sans-serif; }
+        body { overflow: hidden; background-color: #ffdde1; }
+
+        /* Curtain Animation */
+        .curtain {
+            position: fixed;
+            width: 50%;
+            height: 100vh;
+            background: linear-gradient(to bottom, #ffdde1, #ee9ca7);
+            z-index: 9999;
+            top: 0;
+            transition: transform 4s cubic-bezier(0.86, 0, 0.07, 1);
+        }
+        .left { left: 0; transform: translateX(0); }
+        .right { right: 0; transform: translateX(0); }
+        
+        /* Password Container */
+        .password-container {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            display: none;
+            animation: fadeIn 1s ease-in-out;
+        }
+        
+        input {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-top: 10px;
+            width: 80%;
+        }
+        button {
+            background: #ff6b81;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            margin-top: 10px;
+            cursor: pointer;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translate(-50%, -55%); }
+            to { opacity: 1; transform: translate(-50%, -50%); }
+        }
+        
+        @keyframes hearts-fall {
+            0% { transform: translateY(-10%); opacity: 0; }
+            100% { transform: translateY(100vh); opacity: 1; }
+        }
+        
+        .heart {
+            position: absolute;
+            color: rgba(255, 0, 0, 0.5);
+            font-size: 20px;
+            animation: hearts-fall 4s linear infinite;
+        }
+
+        .skip-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.8);
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            color: #333;
+            z-index: 10000;
+        }
+        
+
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+        }
+        
+        .gift-button:hover {
+            transform: scale(1.05);
+        }
+        
+        .kissing-emoji {
+            position: fixed;
+            font-size: 50px;
+            pointer-events: none;
+            animation: flyAndFade 2s ease-out forwards;
+            z-index: 10001;
+        }
+        
+        @keyframes flyAndFade {
+            0% {
+                transform: translate(-50%, -50%) scale(0);
+                opacity: 0;
+            }
+            20% {
+                transform: translate(-50%, -50%) scale(1.2);
+                opacity: 1;
+            }
+            100% {
+                transform: translate(-50%, -200%) scale(1);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Background Music -->
+    <audio id="bgMusic" preload="auto" loop>
+        <source src="assets/music/Until-I-Found-You-(Female-Version)(PagalNew.Com.Se).mp3" type="audio/mpeg">
+        <source src="assets/music/Until-I-Found-You-(Female-Version)(PagalNew.Com.Se).ogg" type="audio/ogg">
+        Your browser does not support the audio element.
+    </audio>
+    
+    <div class="curtain left"></div>
+    <div class="curtain right"></div>
+    
+    <div class="password-container" id="passwordBox">
+        <h2>Enter Password</h2>
+        <input type="password" id="passwordInput" placeholder="Enter Password">
+        <button onclick="checkPassword()">Submit</button>
+    </div>
+
+
+    <!-- <a href="home.html" class="skip-button">Skip ➔</a> -->
+
+    <script>
+        setTimeout(() => {
+            document.querySelector('.left').style.transform = 'translateX(-100%)';
+            document.querySelector('.right').style.transform = 'translateX(100%)';
+            setTimeout(() => {
+                document.getElementById('passwordBox').style.display = 'block';
+                createHearts();
+            }, 4000);
+        }, 1000);
+
+        function checkPassword() {
+            const password = document.getElementById('passwordInput').value;
+            if (password === "ragini") {
+                // Set music state in localStorage
+                localStorage.setItem('musicPlaying', 'true');
+                
+                document.getElementById('passwordBox').style.display = 'none';
+                document.querySelector('.left').style.display = 'none';
+                document.querySelector('.right').style.display = 'none';
+                document.body.style.overflow = 'auto';
+                createHearts();
+                window.location.href = 'home.html';
+            } else {
+                alert("Incorrect password! Try again.");
+            }
+        }
+        
+        function createHearts() {
+            for (let i = 0; i < 50; i++) {
+                let heart = document.createElement("div");
+                heart.innerHTML = "❤";
+                heart.classList.add("heart");
+                heart.style.left = Math.random() * 100 + "vw";
+                heart.style.animationDuration = (Math.random() * 3 + 2) + "s";
+                heart.style.fontSize = (Math.random() * 30 + 10) + "px";
+                heart.style.position = "fixed";
+                heart.style.top = "-10px";
+                document.body.appendChild(heart);
+
+                setTimeout(() => { heart.remove(); }, 5000);
+            }
+            setTimeout(createHearts, 2000);
+        }
+
+    </script>
+</body>
+</html>
