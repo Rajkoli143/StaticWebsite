@@ -9,6 +9,30 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Dancing+Script:wght@700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap" rel="stylesheet">
     <style>
+
+        /* Next Button Styles */
+        .next-button-container {
+            text-align: center;
+            padding: 3rem 0;
+            margin-top: 2rem;
+        }
+        .next-button {
+            display: inline-block;
+            padding: 1.2rem 4rem;
+            font-size: 1.5rem;
+            color: white;
+            background: linear-gradient(45deg, var(--primary-color), var(--accent-color));
+            border-radius: 50px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(221, 160, 221, 0.4);
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+        }
+        .next-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(221, 160, 221, 0.6);
+        }
         html {
             scroll-behavior: smooth;
         }
@@ -137,7 +161,32 @@
             font-size: 18px;
             font-weight: bold;
         }
+        
+        /* Next Button Styles */
+        .next-button-container {
+            text-align: center;
+            padding: 3rem 0;
+            margin-top: 2rem;
+        }
+        .next-button {
+            display: inline-block;
+            padding: 1.2rem 4rem;
+            font-size: 1.5rem;
+            color: white;
+            background: linear-gradient(45deg, var(--primary-color), var(--accent-color));
+            border-radius: 50px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(221, 160, 221, 0.4);
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+        }
+        .next-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(221, 160, 221, 0.6);
+        }
     </style>
+    <script type="text/javascript" async src="https://tenor.com/embed.js"></script>
 </head>
 <body>
      <!-- Hearts container will be added by JavaScript -->
@@ -157,8 +206,8 @@
         <div class="floating-hearts" id="floatingHearts"></div>
         <div class="background-overlay"></div>
         <div class="hero-content">
-             <h1>For Madam ji 😘, My Eternal Valentine</h1>.            
-            <p class="subtitle">Every moment with you is pure magic</p>
+             <h1>For Madam ji😘, My Eternal Valentine</h1>          
+            <p class="subtitle">Every moment with you is pure magic</p> 
             <a href="#love-story"><button id="beginJourney" class="journey-btn">Begin Our Journey</button></a>
         </div>
     </header>
@@ -178,102 +227,101 @@
         <div class="story-container">
             <div class="flashcard-container">
                 <div class="flashcard" onclick="this.classList.toggle('flipped')">
-                    <div class="side front">Chapter 1: First Meeting 🎓</div>
+                    <div class="side front">Chapter 1: First Meeting </div>
                     <div class="side back">
                         <div class="chapter-title">Chapter 1: First Meeting</div>
-                        "Woh din yaad hai ji vo workshop wala aap mere side mai baithe the aur aap try kar rahe the mere se baat karne ke per mai apko ignore kar raha tha 🙈. Sorry ji, vo main thoda darta tha... ladkiyon se baat karne mein thoda hesitant hota tha.🥲😍"
+                        "Woh din yaad hai ji vo workshop wala aap mere side mai baithe the aur aap try kar rahe the mere se baat karne ke per mai apko ignore kar raha tha . Sorry ji, vo main thoda darta tha... ladkiyon se baat karne mein thoda hesitant hota tha."
                     </div>
                 </div>
             </div>
             <div class="flashcard-container">
                 <div class="flashcard" onclick="this.classList.toggle('flipped')">
-                    <div class="side front">Chapter 2: The First Message 💌</div>
+                    <div class="side front">Chapter 2: The First Message </div>
                     <div class="side back">
                         <div class="chapter-title">Chapter 2: The First Message</div>
-                        "Aapka 'Hi' message Friday ko aaya aur main itna khush hua ki bas bata nahi sakta! kyuki mujhe pahele bar kise ladki ka hii msg aya tha 😅"
+                        "Aapka 'Hi' message Friday ko aaya aur main itna khush hua ki bas bata nahi sakta! kyuki mujhe pahele bar kise ladki ka hii msg aya tha "
                     </div>
                 </div>
             </div>
             <div class="flashcard-container">
                 <div class="flashcard" onclick="this.classList.toggle('flipped')">
-                    <div class="side front">Chapter 3: Station per milna 🚉</div>
+                    <div class="side front">Chapter 3: Station per milna </div>
                     <div class="side back">
                         <div class="chapter-title">Chapter 3: Station per milna</div>
-                        "Phir hum dono saath mein station jaane lage, aur woh moments hamesha yaad rahenge! 🥰"
+                        "Phir hum dono saath mein station jaane lage, aur woh moments hamesha yaad rahenge! "
                     </div>
                 </div>
             </div>
             <div class="flashcard-container">
                 <div class="flashcard" onclick="this.classList.toggle('flipped')">
-                    <div class="side front">Chapter 4: 5 Sep ☕</div>
+                    <div class="side front">Chapter 4: 5 Sep </div>
                     <div class="side back">
                         <div class="chapter-title">Chapter 4: 5th sep </div>
-                        "Hyy apko vo 5 sep day yaad hai jb aap traditional mai aye the bahut sweet lag rahe the😍  ✨"
+                        "Hyy apko vo 5 sep day yaad hai jb aap traditional mai aye the bahut sweet lag rahe the  "
                     </div>
                 </div>
             </div>
             <div class="flashcard-container">
                 <div class="flashcard" onclick="this.classList.toggle('flipped')">
-                    <div class="side front">Chapter 5: Atlas wale raat  📚</div>
+                    <div class="side front">Chapter 5: Atlas wale raat  </div>
                     <div class="side back">
                         <div class="chapter-title">Chapter 5:Atlas wale raat  </div>
-                        "oyee apko vo raat yaad hai pure 14-15 hours ham call per aur pure 24 hours sath mai baat kar rahe the aap mai aur vo pure raat baithe bahut accha laga ji hame pata he nahi chala ke itna time hua mujhe abhi ye lagta hai ke hmm bss 5 min baat ke the 👀😜💫"
+                        "oyee apko vo raat yaad hai pure 14-15 hours ham call per aur pure 24 hours sath mai baat kar rahe the aap mai aur vo pure raat baithe bahut accha laga ji hame pata he nahi chala ke itna time hua mujhe abhi ye lagta hai ke hmm bss 5 min baat ke the "
                     </div>
                 </div>
             </div>
             <div class="flashcard-container">
                 <div class="flashcard" onclick="this.classList.toggle('flipped')">
-                    <div class="side front">Chapter 6: Birthday Wish 🎂</div>
+                    <div class="side front">Chapter 6: Birthday Wish </div>
                     <div class="side back">
                         <div class="chapter-title">Chapter 6: Birthday Wish</div>
-                        "Happy birthday mera baccha🥰🤭....apne story per lagaya tha bahut khush tha mai mere sab se pyara gift tha vo aur apko pata hai ji sabse pahele apne hame wish kiya tha aur ye dekho na ji hamara birthday dates kaise hai mere 31th ko aur apka 1 nov ko 🥰😘🎉"
+                        "Happy birthday mera baccha....apne story per lagaya tha bahut khush tha mai mere sab se pyara gift tha vo aur apko pata hai ji sabse pahele apne hame wish kiya tha aur ye dekho na ji hamara birthday dates kaise hai mere 31th ko aur apka 1 nov ko "
                     </div>
                 </div>
             </div>
             <div class="flashcard-container">
                 <div class="flashcard" onclick="this.classList.toggle('flipped')">
-                    <div class="side front">Chapter 7: First Diwali 🤗</div>
+                    <div class="side front">Chapter 7: First Diwali </div>
                     <div class="side back">
                         <div class="chapter-title">Chapter 7: First Diwali</div>
-                        "Hyy apko hamare first diwali yaad hai mai traditional pahena tha apne saree pane the bahut cute dekh rahe the ji bss ham mil nahi paye ji per next diwali sath mai manayenge ji 🥹🌈"
+                        "Hyy apko hamare first diwali yaad hai mai traditional pahena tha apne saree pane the bahut cute dekh rahe the ji bss ham mil nahi paye ji per next diwali sath mai manayenge ji "
                     </div>
                 </div>
             </div>
             <div class="flashcard-container">
                 <div class="flashcard" onclick="this.classList.toggle('flipped')">
-                    <div class="side front">Chapter 8: Special Moments 💫</div>
+                    <div class="side front">Chapter 8: Special Moments </div>
                     <div class="side back">
                         <div class="chapter-title">Chapter 8: Special Moments</div>
-                        "Madam ji apko pata hai aaj hame 6 months hua hai madam ji ye bhi apne he hame bata tha mujhe pata he nahi chala ke itne din hua mujhe abhi ye lagta hai ke hmm bss abhi abhi mile hai 😅 
-                        Congratulations madam ji 🥰😘😇 vaise bhi madam ji hame apke sath hamesha rahena hai ji. "
+                        "Madam ji apko pata hai aaj hame 6 months hua hai madam ji ye bhi apne he hame bata tha mujhe pata he nahi chala ke itne din hua mujhe abhi ye lagta hai ke hmm bss abhi abhi mile hai 
+                        Congratulations madam ji . vaise bhi madam ji hame apke sath hamesha rahena hai ji. "
                     </div>
-
                 </div>
             </div>
             <div class="flashcard-container">
                 <div class="flashcard" onclick="this.classList.toggle('flipped')">
-                    <div class="side front">Chapter 9: Future Dreams 🌟</div>
+                    <div class="side front">Chapter 9: Future Dreams </div>
                     <div class="side back">
                         <div class="chapter-title">Chapter 9: Future Dreams</div>
-                        "Vaise madam ji hame apke sath bahut time spend karna hai ji pure life apke sath rahene hai and i promise you madam ji ham apke sath hamesha hai ji don't worry ji chaheye kuch bhi ho ji i am with you madam ji always❤️💕"
+                        "Vaise madam ji hame apke sath bahut time spend karna hai ji pure life apke sath rahene hai and i promise you madam ji ham apke sath hamesha hai ji don't worry ji chaheye kuch bhi ho ji i am with you madam ji always"
                     </div>
                 </div>
             </div>
             <div class="flashcard-container">
                 <div class="flashcard" onclick="this.classList.toggle('flipped')">
-                    <!-- <div class m="side front">Chapter 10: At last🌟</div> -->
+                    <!-- <div class m="side front">Chapter 10: At last</div> -->
                     <div class="side back">
                         <div class="chapter-title">Chapter 10: At last</div>
-                        " Vaise madam ji ham apse bahut pyari karte hai ji unlimited wala 🥹 aur mai hamesha karta rahunga ji love you so much madam ji 🥰😘"
+                        " Vaise madam ji ham apse bahut pyari karte hai ji unlimited wala  aur mai hamesha karta rahunga ji love you so much madam ji "
                     </div>
                 </div> 
             </div>
             <div class="flashcard-container">
                 <div class="flashcard" onclick="this.classList.toggle('flipped')">
-                    <!-- <div class m="side front">Chapter 10: At last🌟</div> -->
+                    <!-- <div class m="side front">Chapter 10: At last</div> -->
                     <div class="side back">
                         <div class="chapter-title">Chapter 11: What I want??</div>
-                        "Mujhe apke smile 😊 apke hasi😂 hamesha chaheye ji hamesha khush rahunga ji and thanku madam ji mere life mai ane ke liya i deserve i girl like you love you madam ji 🥰😘 apko chote bacche ke tarah rakhunga ji apne dil mai ♥️ hamesha kise aur ka hone nahi dunga ji kabhi nahi 🥰🥹🫶"
+                        "Mujhe apke smile  apke hasi  hamesha chaheye ji hamesha khush rahunga ji and thanku madam ji mere life mai ane ke liya i deserve i girl like you love you madam ji  apko chote bacche ke tarah rakhunga ji apne dil mai  hamesha kise aur ka hone nahi dunga ji kabhi nahi "
                     </div>
                 </div> 
             </div>
@@ -286,7 +334,7 @@
         <h2>For Your Eyes Only</h2>
         <div class="vault-container">
             <div class="password-form">
-                <p class="hint">Hint: Vo kaun se raat the jis din apne mere dil ke baat khole the?? 🏫</p>
+                <p class="hint">Hint: Vo kaun se raat the jis din apne mere dil ke baat khole the?? </p>
                 <input type="password" id="vaultPassword" placeholder="Enter the memoriable place...(everthing in small lettes)">
                 <button onclick="unlockVault()">Open My Heart</button>
             </div>
@@ -394,6 +442,7 @@
     </section>
 
     <!-- Magic Mirror and Gift Section -->
+
     <section id="magic-mirror" class="story-section">
         <h2>Magic Mirror & Your Gift</h2>
         <div class="wrapper" style="display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; max-width: 1200px; margin: 0 auto;">
@@ -409,18 +458,33 @@
             <div class="container" style="width: 400px; background: white; padding: 20px; border-radius: 10px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); margin-bottom: 20px;">
                 <h3>Your Special Gift</h3>
                 <div class="input-box">
-                    <p>Click the button to reveal your gift! 🎁</p>
+                    <p>Click the button to reveal your gift! </p>
                     <button onclick="revealSpecialGift()" style="background: #ff4d6d; color: white; padding: 10px; border: none; border-radius: 5px; margin-top: 10px; cursor: pointer;">Open Gift</button>
                 </div>
                 <p id="special-gift-message" style="display: none; margin-top: 20px; padding: 15px; background: #ff4d6d; color: white; border-radius: 5px; opacity: 0; transition: opacity 2s ease-in-out;"></p>
             </div>
+
+            <!-- Valentine's Ask Section -->
+        
+            <div class="container" style="width: 400px; background: white; padding: 20px; border-radius: 20px; box-shadow: 0 0 20px rgba(255, 182, 193, 0.3); margin-bottom: 20px;">
+                <div class="valentine-container" style="text-align: center; padding: 20px;">
+                    <img src="assets/gif/adurable-cat.gif" alt="Cute Cat Asking" style="width: 250px; margin-bottom: 15px; border-radius: 15px;">
+                    <p class="text" style="font-size: 2em; font-weight: bold; color: #ff4d79; margin: 15px 0;">Will You Go Out With Me? 🥺</p>
+                    <div class="options" id="options" style="display: none; margin-top: 20px;">
+                        <button class="btn" id="yesButton" style="background: #ff4d6d; color: white; border: none; padding: 15px 40px; font-size: 20px; font-weight: bold; border-radius: 50px; cursor: pointer; transition: 0.3s; margin: 10px; box-shadow: 0 4px 15px rgba(255, 77, 109, 0.3);">Yes 💖</button>
+                        <button class="btn" id="noButton" style="background: #ff4d6d; color: white; border: none; padding: 15px 40px; font-size: 20px; font-weight: bold; border-radius: 50px; cursor: pointer; transition: 0.3s; margin: 10px; box-shadow: 0 4px 15px rgba(255, 77, 109, 0.3);">No 🥺</button>
+                    </div>
+                    <button class="btn" id="askButton" style="background: #ff4d6d; color: white; border: none; padding: 15px 40px; font-size: 20px; font-weight: bold; border-radius: 50px; cursor: pointer; transition: 0.3s; margin-top: 20px; box-shadow: 0 4px 15px rgba(255, 77, 109, 0.3);">Ask Now! 💝</button>
+                    <img id="valentineGif" alt="Cute Response" style="display: none; margin: 20px auto; width: 200px; border-radius: 15px;">
+                </div>
+            </div>
         </div>
+
+    
     </section>
 
-    <!-- Confetti Canvas for animations -->
-    <canvas id="confettiCanvas"></canvas>
+   
 
-    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             // Check if we should play music
@@ -469,7 +533,7 @@
                     vaultContent.classList.remove('hidden');
                     vaultContent.innerHTML = `
                         <div class="love-letter">
-                            <h3>My Dearest Madam Ji ❤️</h3>
+                            <h3>My Dearest Madam Ji </h3>
                             <div class="letter-content hindi-text">
                                 <p>
                                     "Aaj main aapse kuch special share karna chahta hoon. Us din jab pehli baar mile the, 
@@ -494,24 +558,50 @@
             let message = document.getElementById("mirror-message");
             
             if (name.trim() !== "") {
-                message.innerHTML = `✨ ${name}, you are the most special person in my life! ✨`;
+                message.innerHTML = ` ${name}, you are the most special person in my life! `;
                 message.style.display = "block";
                 setTimeout(() => {
                     message.style.opacity = "1";
                 }, 100);
             } else {
-                alert("Please enter your name, my love! 💕");
+                alert("Please enter your name, my love! ");
             }
         }
 
         function revealSpecialGift() {
             let giftMessage = document.getElementById("special-gift-message");
-            giftMessage.innerHTML = "🎉 Surprise! You've received endless love and happiness! 💝";
+            giftMessage.innerHTML = " Surprise! You've received endless love and happiness! ";
             giftMessage.style.display = "block";
             setTimeout(() => {
                 giftMessage.style.opacity = "1";
             }, 100);
         }
     </script>
+    <script>
+        // Valentine's Ask Button Logic
+        document.getElementById("askButton").addEventListener("click", function() {
+            document.getElementById("askButton").style.display = "none";
+            document.getElementById("options").style.display = "block";
+        });
+
+        document.getElementById("yesButton").addEventListener("click", function() {
+            document.querySelector(".text").innerHTML = "Hehehehe, I knew it! ";
+            document.getElementById("valentineGif").src = "assets/gif/yes.gif";
+            document.getElementById("valentineGif").style.display = "block";
+            document.getElementById("options").style.display = "none";
+        });
+
+        document.getElementById("noButton").addEventListener("click", function() {
+            document.querySelector(".text").innerHTML = "Still trying to say no? 😏";
+            document.getElementById("valentineGif").src = "assets/gif/no.gif";
+            document.getElementById("valentineGif").style.display = "block";
+            document.getElementById("options").style.display = "none";
+        });
+    </script>
+    <div class="next-button-container" style="text-align: center; padding: 4rem 0; margin: 2rem auto;">
+        <a href="valentine.html" class="next-button">
+            Next ❤️
+        </a>
+    </div>
 </body>
 </html>
