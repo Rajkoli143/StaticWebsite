@@ -105,28 +105,46 @@
     </div>
 
     <script>
-        // Music toggle functionality
+        // Music control
         const musicToggle = document.querySelector('.music-toggle');
         const bgMusic = document.getElementById('bgMusic');
-        let isMusicPlaying = false;
 
-        // Auto-play music when the page loads
-        window.addEventListener('load', function() {
-            bgMusic.play().catch(function(error) {
-                console.log("Audio autoplay failed:", error);
-            });
-            isMusicPlaying = true;
+        // Get URL parameters
+        const urlParams = new URLSearchParams(window.location.search);
+        const startTime = parseFloat(urlParams.get('t')) || 0;
+        const shouldPlay = urlParams.get('play') !== 'false';
+
+        // Initialize music state
+        window.addEventListener('DOMContentLoaded', function() {
+            bgMusic.currentTime = startTime;
+            musicToggle.style.opacity = shouldPlay ? '1' : '0.5';
+            
+            if (shouldPlay) {
+                const playPromise = bgMusic.play();
+                if (playPromise !== undefined) {
+                    playPromise.catch(function(error) {
+                        console.log("Audio autoplay failed:", error);
+                        // Try again with user interaction
+                        const playOnFirstClick = function() {
+                            bgMusic.currentTime = startTime;  // Set time again in case it was reset
+                            bgMusic.play();
+                            document.removeEventListener('click', playOnFirstClick);
+                        };
+                        document.addEventListener('click', playOnFirstClick, { once: true });
+                    });
+                }
+            }
         });
 
+        // Music toggle functionality
         musicToggle.addEventListener('click', function() {
-            if (isMusicPlaying) {
+            if (!bgMusic.paused) {
                 bgMusic.pause();
                 musicToggle.style.opacity = '0.5';
             } else {
                 bgMusic.play();
                 musicToggle.style.opacity = '1';
             }
-            isMusicPlaying = !isMusicPlaying;
         });
 
         let noCount = 0;

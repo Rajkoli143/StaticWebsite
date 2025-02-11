@@ -488,7 +488,7 @@
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             // Check if we should play music
-            if (localStorage.getItem('musicPlaying') === 'true') {
+            if (localStorage.getItem('isMusicPlaying') === 'true') {
                 const bgMusic = document.getElementById('bgMusic');
                 if (bgMusic) {
                     bgMusic.volume = 1;
@@ -553,6 +553,61 @@
     <script src="js/main.js"></script>
     <script src="js/gallery.js"></script>
     <script>
+        // Music control
+        const musicToggle = document.querySelector('.music-toggle');
+        const bgMusic = document.getElementById('bgMusic');
+        
+        // Set default state to playing for new visitors
+        if (localStorage.getItem('isMusicPlaying') === null) {
+            localStorage.setItem('isMusicPlaying', 'true');
+        }
+        let isMusicPlaying = localStorage.getItem('isMusicPlaying') === 'true';
+
+        function updateMusicState(playing) {
+            isMusicPlaying = playing;
+            localStorage.setItem('isMusicPlaying', playing);
+            musicToggle.style.opacity = playing ? '1' : '0.5';
+            if (playing) {
+                bgMusic.play().catch(function(error) {
+                    console.log("Audio autoplay failed:", error);
+                    // Try again with user interaction
+                    document.body.addEventListener('click', function playOnClick() {
+                        bgMusic.play();
+                        document.body.removeEventListener('click', playOnClick);
+                    }, { once: true });
+                });
+            } else {
+                bgMusic.pause();
+            }
+        }
+
+        // Initialize music state
+        window.addEventListener('load', function() {
+            if (isMusicPlaying) {
+                bgMusic.play().catch(function(error) {
+                    console.log("Audio autoplay failed:", error);
+                    // Try again with user interaction
+                    document.body.addEventListener('click', function playOnClick() {
+                        bgMusic.play();
+                        document.body.removeEventListener('click', playOnClick);
+                    }, { once: true });
+                });
+                musicToggle.style.opacity = '1';
+            } else {
+                musicToggle.style.opacity = '0.5';
+            }
+        });
+
+        musicToggle.addEventListener('click', function() {
+            updateMusicState(!isMusicPlaying);
+        });
+
+        // Store current time before leaving page
+        window.addEventListener('beforeunload', function() {
+            localStorage.setItem('musicTime', bgMusic.currentTime);
+        });
+    </script>
+    <script>
         function showMirrorMessage() {
             let name = document.getElementById("nameInput").value;
             let message = document.getElementById("mirror-message");
@@ -599,9 +654,18 @@
         });
     </script>
     <div class="next-button-container" style="text-align: center; padding: 4rem 0; margin: 2rem auto;">
-        <a href="valentine.html" class="next-button">
+        <a href="javascript:void(0)" onclick="goToValentine()" class="next-button">
             Next ❤️
         </a>
     </div>
+
+    <script>
+        function goToValentine() {
+            const bgMusic = document.getElementById('bgMusic');
+            const currentTime = bgMusic ? bgMusic.currentTime : 0;
+            const isPlaying = bgMusic ? !bgMusic.paused : true;
+            window.location.href = `valentine.html?t=${currentTime}&play=${isPlaying}`;
+        }
+    </script>
 </body>
 </html>

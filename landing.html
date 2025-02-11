@@ -118,11 +118,14 @@
 </head>
 <body>
     <!-- Background Music -->
-    <audio id="bgMusic" preload="auto" loop>
-        <source src="assets/music/Sahiba Priya Saraiya 128 Kbps.mp3" type="audio/mpeg">
-        <source src="assets/music/Sahiba Priya Saraiya 128 Kbps.ogg" type="audio/ogg">
-        Your browser does not support the audio element.
-    </audio>
+    <div class="music-toggle" style="display: none;">
+        <i class="fas fa-music"></i>
+        <audio id="bgMusic" preload="auto" loop>
+            <source src="assets/music/Sahiba Priya Saraiya 128 Kbps.mp3" type="audio/mpeg">
+            <source src="assets/music/Sahiba Priya Saraiya 128 Kbps.ogg" type="audio/ogg">
+            Your browser does not support the audio element.
+        </audio>
+    </div>
     
     <div class="curtain left"></div>
     <div class="curtain right"></div>
@@ -133,10 +136,15 @@
         <button onclick="checkPassword()">Next</button>
     </div>
 
-
-    <!-- <a href="home.html" class="skip-button">Skip ➔</a> -->
-
     <script>
+        // Initialize audio context on first user interaction
+        let audioContext;
+        document.addEventListener('click', initAudio, { once: true });
+        
+        function initAudio() {
+            audioContext = new (window.AudioContext || window.webkitAudioContext)();
+        }
+
         setTimeout(() => {
             document.querySelector('.left').style.transform = 'translateX(-100%)';
             document.querySelector('.right').style.transform = 'translateX(100%)';
@@ -146,22 +154,62 @@
             }, 4000);
         }, 1000);
 
+        async function startMusic() {
+            const bgMusic = document.getElementById('bgMusic');
+            bgMusic.volume = 1;
+            
+            try {
+                // Try to play immediately
+                await bgMusic.play();
+                console.log("Music started successfully");
+            } catch (error) {
+                console.log("Direct play failed, trying after user interaction");
+                // Try to play on next user interaction
+                const playOnInteraction = async () => {
+                    try {
+                        await bgMusic.play();
+                        console.log("Music started on interaction");
+                        document.removeEventListener('click', playOnInteraction);
+                    } catch (e) {
+                        console.error("Play failed:", e);
+                    }
+                };
+                document.addEventListener('click', playOnInteraction);
+            }
+        }
+
         function checkPassword() {
             const password = document.getElementById('passwordInput').value;
             if (password === "ragini") {
-                // Set music state in localStorage
-                localStorage.setItem('musicPlaying', 'true');
+                // Start the music
+                startMusic();
                 
+                // Set music state for next page
+                localStorage.setItem('isMusicPlaying', 'true');
+                localStorage.setItem('musicTime', '0');
+                
+                // Hide elements
                 document.getElementById('passwordBox').style.display = 'none';
                 document.querySelector('.left').style.display = 'none';
                 document.querySelector('.right').style.display = 'none';
                 document.body.style.overflow = 'auto';
                 createHearts();
-                window.location.href = 'home.html';
+
+                // Wait a bit for music to start before redirecting
+                setTimeout(() => {
+                    window.location.href = 'home.html';
+                }, 1000);
             } else {
                 alert("Incorrect password! Try again.");
             }
         }
+        
+        // Allow Enter key to submit
+        document.getElementById('passwordInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                checkPassword();
+            }
+        });
         
         function createHearts() {
             for (let i = 0; i < 50; i++) {
