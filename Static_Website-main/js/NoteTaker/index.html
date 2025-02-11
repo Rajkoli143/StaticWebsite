@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Note Taker - Your Digital Notebook</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">Note Taker</div>
+            <div class="nav-links">
+                <a href="auth/signin.html" class="btn btn-outline">Sign In</a>
+                <a href="auth/signup.html" class="btn btn-primary">Sign Up</a>
+            </div>
+        </nav>
+    </header>
+
+    <main class="hero">
+        <div class="hero-content">
+            <h1>Welcome to Note Taker</h1>
+            <p>Your secure digital notebook for capturing ideas, thoughts, and memories.</p>
+            <div class="cta-buttons">
+                <a href="auth/signup.html" class="btn btn-primary">Get Started</a>
+                <a href="#features" class="btn btn-outline">Learn More</a>
+            </div>
+        </div>
+    </main>
+
+    <section id="features" class="features">
+        <h2>Why Choose Note Taker?</h2>
+        <div class="feature-grid">
+            <div class="feature-card">
+                <h3>Secure Storage</h3>
+                <p>Your notes are encrypted and stored securely</p>
+            </div>
+            <div class="feature-card">
+                <h3>Easy Access</h3>
+                <p>Access your notes from anywhere, anytime</p>
+            </div>
+            <div class="feature-card">
+                <h3>Simple Interface</h3>
+                <p>Clean and intuitive design for better note-taking</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Note Taker. All rights reserved.</p>
+    </footer>
+</body>
+</html>
