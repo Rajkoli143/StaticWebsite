@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Note Taker</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+    <nav>
+        <div class="logo">Note Taker</div>
+        <div class="nav-links">
+            <span id="user-email"></span>
+            <button id="logout-btn" class="btn btn-outline">Sign Out</button>
+        </div>
+    </nav>
+
+    <div class="dashboard">
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+            <h2>My Notes</h2>
+            <button id="new-note-btn" class="btn btn-primary">New Note</button>
+        </div>
+
+        <div id="notes-grid" class="notes-grid">
+            <!-- Notes will be dynamically added here -->
+        </div>
+
+        <!-- New Note Modal -->
+        <div id="note-modal" style="display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.5); align-items: center; justify-content: center;">
+            <div style="background: white; padding: 2rem; border-radius: 0.5rem; width: 90%; max-width: 500px;">
+                <h3 id="modal-title">New Note</h3>
+                <form id="note-form" class="auth-form">
+                    <div class="form-group">
+                        <label for="note-title">Title</label>
+                        <input type="text" id="note-title" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="note-content">Content</label>
+                        <textarea id="note-content" rows="4" required></textarea>
+                    </div>
+                    <div style="display: flex; gap: 1rem;">
+                        <button type="submit" class="btn btn-primary">Save</button>
+                        <button type="button" id="cancel-note" class="btn btn-outline">Cancel</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/auth.js"></script>
+    <script src="../js/dashboard.js"></script>
+</body>
+</html>

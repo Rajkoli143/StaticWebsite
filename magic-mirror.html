@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Magic Mirror & Your Gift</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #ffebf2;
+            padding: 50px;
+            min-height: 100vh;
+            margin: 0;
+        }
+        .wrapper {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .container {
+            width: 400px;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+        #message, #gift-message {
+            display: none;
+            margin-top: 20px;
+            padding: 15px;
+            background: #ff4d6d;
+            color: white;
+            border-radius: 5px;
+            opacity: 0;
+            transition: opacity 2s ease-in-out;
+        }
+        .input-box {
+            margin-top: 15px;
+        }
+        input, button {
+            padding: 10px;
+            margin-top: 10px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+        button {
+            background: #ff4d6d;
+            color: white;
+            cursor: pointer;
+            border: none;
+            transition: background 0.3s ease;
+        }
+        button:hover {
+            background: #e63950;
+        }
+        
+        .kissing-emoji {
+            position: absolute;
+            font-size: 50px;
+            pointer-events: none;
+            animation: flyAndFade 2s ease-out forwards;
+            z-index: 1000;
+        }
+        
+        @keyframes flyAndFade {
+            0% {
+                transform: translate(-50%, -50%) scale(0);
+                opacity: 0;
+            }
+            20% {
+                transform: translate(-50%, -50%) scale(1.2);
+                opacity: 1;
+            }
+            100% {
+                transform: translate(-50%, -200%) scale(1);
+                opacity: 0;
+            }
+        }
+        .back-button {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            text-decoration: none;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 10px 20px;
+            border-radius: 5px;
+            color: #333;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body>
+    <a href="home.html" class="back-button">← Back</a>
+    
+    <div class="wrapper">
+        <div class="container">
+            <h2>Magic Mirror</h2>
+            <div class="input-box">
+                <input type="text" id="nameInput" placeholder="Enter your name">
+                <button onclick="showMessage()">Reveal</button>
+            </div>
+            <p id="message"></p>
+        </div>
+        
+        <div class="container">
+            <h2>Your Special Gift</h2>
+            <div class="input-box">
+                <p>Click the button to reveal your gift! 🎁</p>
+                <button onclick="revealGift()">Open Gift</button>
+            </div>
+            <p id="gift-message"></p>
+        </div>
+    </div>
+
+    <script>
+        function showMessage() {
+            let name = document.getElementById("nameInput").value;
+            let message = document.getElementById("message");
+            
+            if (name.trim() !== "Raj") {
+                message.innerHTML = `✨ ${name}, you are the most special person in my life! ✨`;
+                message.style.display = "block";
+                setTimeout(() => {
+                    message.style.opacity = "1";
+                }, 100);
+            } else {
+                alert("Please enter your name, my love! 💕");
+            }
+        }
+
+        function revealGift() {
+            // Show the gift message
+            let giftMessage = document.getElementById("gift-message");
+            giftMessage.innerHTML = "🎉 Surprise! You've received endless love and happiness! 💝";
+            giftMessage.style.display = "block";
+            setTimeout(() => {
+                giftMessage.style.opacity = "1";
+            }, 100);
+
+            // Get the gift container for positioning
+            const giftContainer = document.querySelector('.container:nth-child(2)');
+            const rect = giftContainer.getBoundingClientRect();
+            
+            // Create and animate multiple kissing emojis
+            for(let i = 0; i < 5; i++) {
+                setTimeout(() => {
+                    const emoji = document.createElement('div');
+                    emoji.className = 'kissing-emoji';
+                    emoji.textContent = '😘';
+                    
+                    // Position emoji relative to the gift container
+                    emoji.style.left = (rect.left + rect.width / 2) + 'px';
+                    emoji.style.top = (rect.top + rect.height / 2) + 'px';
+                    
+                    document.body.appendChild(emoji);
+                    
+                    // Remove emoji after animation
+                    setTimeout(() => {
+                        emoji.remove();
+                    }, 2000);
+                }, i * 200);
+            }
+        }
+    </script>
+</body>
+</html>
