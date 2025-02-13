@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>[Her Name]'s Love Odyssey</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Dancing+Script:wght@700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+
+        /* Next Button Styles */
+        .next-button-container {
+            text-align: center;
+            padding: 3rem 0;
+            margin-top: 2rem;
+        }
+        .next-button {
+            display: inline-block;
+            padding: 1.2rem 4rem;
+            font-size: 1.5rem;
+            color: white;
+            background: linear-gradient(45deg, var(--primary-color), var(--accent-color));
+            border-radius: 50px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(221, 160, 221, 0.4);
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+        }
+        .next-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(221, 160, 221, 0.6);
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+        .story-section {
+            width: 100%;
+            padding: 20px 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .story-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 25px;
+            padding: 20px;
+        }
+        .flashcard-container {
+            perspective: 1000px;
+        }
+        .flashcard {
+            width: 600px;  
+            height: 290px; 
+            position: relative;
+            transform-style: preserve-3d;
+            transition: transform 0.6s ease-in-out, box-shadow 0.3s;
+            cursor: pointer;
+            border-radius: 15px; 
+        }
+        .flashcard:hover {
+            box-shadow: 0 0 30px rgba(255, 182, 193, 0.8);
+        }
+        .flashcard .side {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            text-transform: uppercase;
+            animation: pulse 2s infinite alternate;
+            padding: 20px;
+            text-align: center;
+            overflow: hidden;
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.05); }
+        }
+        .front {
+            background-color: white;
+            color: #e48bff;
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.8rem;
+            font-weight: 500;
+            text-transform: none;
+        }
+        .back {
+            background-color: white;
+            color: #333;
+            transform: rotateY(180deg);
+            text-transform: none;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.2rem;
+            line-height: 1.6;
+            padding: 25px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+        }
+        .back .chapter-title {
+            color: #e48bff;
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            font-weight: 500;
+        }
+        .flipped {
+            transform: rotateY(180deg) rotateZ(10deg);
+        }
+        /* Hide scrollbar but keep functionality */
+        .story-section::-webkit-scrollbar {
+            height: 0;
+            width: 0;
+        }
+        .story-section {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        .nav-buttons {
+            position: absolute;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 10;
+            padding: 0 20px;
+        }
+        .nav-btn {
+            background-color: rgba(255, 77, 109, 0.8);
+            color: white;
+            border: none;
+            padding: 15px 25px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 18px;
+            transition: all 0.3s ease;
+        }
+        .nav-btn:hover {
+            background-color: rgba(255, 77, 109, 1);
+            transform: scale(1.1);
+        }
+        .card-counter {
+            position: absolute;
+            bottom: -40px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: #ff4d6d;
+            font-size: 18px;
+            font-weight: bold;
+        }
+        
+        /* Next Button Styles */
+        .next-button-container {
+            text-align: center;
+            padding: 3rem 0;
+            margin-top: 2rem;
+        }
+        .next-button {
+            display: inline-block;
+            padding: 1.2rem 4rem;
+            font-size: 1.5rem;
+            color: white;
+            background: linear-gradient(45deg, var(--primary-color), var(--accent-color));
+            border-radius: 50px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(221, 160, 221, 0.4);
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+        }
+        .next-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(221, 160, 221, 0.6);
+        }
+    </style>
+    <script type="text/javascript" async src="https://tenor.com/embed.js"></script>
+</head>
+<body>
+     <!-- Hearts container will be added by JavaScript -->
+     <div class="main-content">
+    <!-- Music Toggle -->
+    <div class="music-toggle">
+        <i class="fas fa-music"></i>
+        <audio id="bgMusic" preload="auto" loop>
+            <source src="assets/music/Ishq Hai - (Raag.Fm).mp3" type="audio/mpeg">
+            <source src="assets/music/Ishq Hai - (Raag.Fm).ogg" type="audio/ogg">
+            Your browser does not support the audio element.
+        </audio>
+    </div>
+
+    <!-- Enchanted Homepage -->
+    <header class="hero">
+        <div class="floating-hearts" id="floatingHearts"></div>
+        <div class="background-overlay"></div>
+        <div class="hero-content">
+             <h1>For Madam ji😘, My Eternal Valentine</h1>          
+            <p class="subtitle">Every moment with you is pure magic</p> 
+            <a href="#love-story"><button id="beginJourney" class="journey-btn">Begin Our Journey</button></a>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav>
+        <ul>
+            <li><a href="#love-story">Love Story</a></li>
+            <li><a href="#love-vault">Secret Vault</a></li>
+            <li><a href="#gift-surprise">Your Gift</a></li>
+        </ul>
+    </nav>
+
+    <!-- Love Story Section -->
+    <section id="love-story" class="story-section">
+        <h2>Our Love Journey</h2>
+        <div class="story-container">
+            <div class="flashcard-container">
+                <div class="flashcard" onclick="this.classList.toggle('flipped')">
+                    <div class="side front">Chapter 1: First Meeting </div>
+                    <div class="side back">
+                        <div class="chapter-title">Chapter 1: First Meeting</div>
+                        "Woh din yaad hai ji vo workshop wala aap mere side mai baithe the aur aap try kar rahe the mere se baat karne ke per mai apko ignore kar raha tha . Sorry ji, vo main thoda darta tha... ladkiyon se baat karne mein thoda hesitant hota tha."
+                    </div>
+                </div>
+            </div>
+            <div class="flashcard-container">
+                <div class="flashcard" onclick="this.classList.toggle('flipped')">
+                    <div class="side front">Chapter 2: The First Message </div>
+                    <div class="side back">
+                        <div class="chapter-title">Chapter 2: The First Message</div>
+                        "Aapka 'Hi' message Friday ko aaya aur main itna khush hua ki bas bata nahi sakta! kyuki mujhe pahele bar kise ladki ka hii msg aya tha "
+                    </div>
+                </div>
+            </div>
+            <div class="flashcard-container">
+                <div class="flashcard" onclick="this.classList.toggle('flipped')">
+                    <div class="side front">Chapter 3: Station per milna </div>
+                    <div class="side back">
+                        <div class="chapter-title">Chapter 3: Station per milna</div>
+                        "Phir hum dono saath mein station jaane lage, aur woh moments hamesha yaad rahenge! "
+                    </div>
+                </div>
+            </div>
+            <div class="flashcard-container">
+                <div class="flashcard" onclick="this.classList.toggle('flipped')">
+                    <div class="side front">Chapter 4: 5 Sep </div>
+                    <div class="side back">
+                        <div class="chapter-title">Chapter 4: 5th sep </div>
+                        "Hyy apko vo 5 sep day yaad hai jb aap traditional mai aye the bahut sweet lag rahe the  "
+                    </div>
+                </div>
+            </div>
+            <div class="flashcard-container">
+                <div class="flashcard" onclick="this.classList.toggle('flipped')">
+                    <div class="side front">Chapter 5: Atlas wale raat  </div>
+                    <div class="side back">
+                        <div class="chapter-title">Chapter 5:Atlas wale raat  </div>
+                        "oyee apko vo raat yaad hai pure 14-15 hours ham call per aur pure 24 hours sath mai baat kar rahe the aap mai aur vo pure raat baithe bahut accha laga ji hame pata he nahi chala ke itna time hua mujhe abhi ye lagta hai ke hmm bss 5 min baat ke the "
+                    </div>
+                </div>
+            </div>
+            <div class="flashcard-container">
+                <div class="flashcard" onclick="this.classList.toggle('flipped')">
+                    <div class="side front">Chapter 6: Birthday Wish </div>
+                    <div class="side back">
+                        <div class="chapter-title">Chapter 6: Birthday Wish</div>
+                        "Happy birthday mera baccha....apne story per lagaya tha bahut khush tha mai mere sab se pyara gift tha vo aur apko pata hai ji sabse pahele apne hame wish kiya tha aur ye dekho na ji hamara birthday dates kaise hai mere 31th ko aur apka 1 nov ko "
+                    </div>
+                </div>
+            </div>
+            <div class="flashcard-container">
+                <div class="flashcard" onclick="this.classList.toggle('flipped')">
+                    <div class="side front">Chapter 7: First Diwali </div>
+                    <div class="side back">
+                        <div class="chapter-title">Chapter 7: First Diwali</div>
+                        "Hyy apko hamare first diwali yaad hai mai traditional pahena tha apne saree pane the bahut cute dekh rahe the ji bss ham mil nahi paye ji per next diwali sath mai manayenge ji "
+                    </div>
+                </div>
+            </div>
+            <div class="flashcard-container">
+                <div class="flashcard" onclick="this.classList.toggle('flipped')">
+                    <div class="side front">Chapter 8: Special Moments </div>
+                    <div class="side back">
+                        <div class="chapter-title">Chapter 8: Special Moments</div>
+                        "Madam ji apko pata hai aaj hame 6 months hua hai madam ji ye bhi apne he hame bata tha mujhe pata he nahi chala ke itne din hua mujhe abhi ye lagta hai ke hmm bss abhi abhi mile hai 
+                        Congratulations madam ji . vaise bhi madam ji hame apke sath hamesha rahena hai ji. "
+                    </div>
+                </div>
+            </div>
+            <div class="flashcard-container">
+                <div class="flashcard" onclick="this.classList.toggle('flipped')">
+                    <div class="side front">Chapter 9: Future Dreams </div>
+                    <div class="side back">
+                        <div class="chapter-title">Chapter 9: Future Dreams</div>
+                        "Vaise madam ji hame apke sath bahut time spend karna hai ji pure life apke sath rahene hai and i promise you madam ji ham apke sath hamesha hai ji don't worry ji chaheye kuch bhi ho ji i am with you madam ji always"
+                    </div>
+                </div>
+            </div>
+            <div class="flashcard-container">
+                <div class="flashcard" onclick="this.classList.toggle('flipped')">
+                    <!-- <div class m="side front">Chapter 10: At last</div> -->
+                    <div class="side back">
+                        <div class="chapter-title">Chapter 10: At last</div>
+                        " Vaise madam ji ham apse bahut pyari karte hai ji unlimited wala  aur mai hamesha karta rahunga ji love you so much madam ji "
+                    </div>
+                </div> 
+            </div>
+            <div class="flashcard-container">
+                <div class="flashcard" onclick="this.classList.toggle('flipped')">
+                    <!-- <div class m="side front">Chapter 10: At last</div> -->
+                    <div class="side back">
+                        <div class="chapter-title">Chapter 11: What I want??</div>
+                        "Mujhe apke smile  apke hasi  hamesha chaheye ji hamesha khush rahunga ji and thanku madam ji mere life mai ane ke liya i deserve i girl like you love you madam ji  apko chote bacche ke tarah rakhunga ji apne dil mai  hamesha kise aur ka hone nahi dunga ji kabhi nahi "
+                    </div>
+            
+            </div>
+            <div class="flashcard-container">
+                <div class="flashcard" onclick="this.classList.toggle('flipped')">
+                    <!-- <div class m="side front">Chapter 10: At last</div> -->
+                    <div class="side back">
+                        <div class="chapter-title">Chapter 12: What I want??</div>
+                        ""Madam ji, aap itni acchi aur pyari ho 😘😍. I feel lucky to have you. Aap hamesha support karti ho, galti meri hoti hai, but you still manaati ho 🥹😘. Promise, ab kabhi naraz nahi karunga. Bas aap hi chahiye 🥹. Aap na dikho toh tension ho jati hai. Sorry 😘😍 aur thank you for everything!""
+                    </div>
+            
+            </div>
+        </div>
+        <div class="card-counter">Card <span id="current-card">1</span> of <span id="total-cards">9</span></div>
+    </section>
+
+    <!-- Secret Love Vault -->
+    <section id="love-vault">
+        <h2>For Your Eyes Only</h2>
+        <div class="vault-container">
+            <div class="password-form">
+                <p class="hint">Hint: Vo kaun se raat the jis din apne mere dil ke baat khole the?? </p>
+                <input type="password" id="vaultPassword" placeholder="Enter the memoriable place...(everthing in small lettes)">
+                <button onclick="unlockVault()">Open My Heart</button>
+            </div>
+            <div class="vault-content hidden">
+                <!-- Content will be revealed when unlocked -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Gift Surprise Section -->
+    <section id="gift-surprise" class="gift-surprise">
+        <h2>A Special Surprise For You</h2>
+        <div class="gift-container">
+            <div class="gift-box" id="giftBox">
+                <div class="gift-lid"></div>
+                <div class="gift-box-body"></div>
+                <button class="claim-btn" id="claimGiftBtn">
+                    <span>Click to Open Your Gift</span>
+                    <i class="fas fa-gift"></i>
+                </button>
+            </div>
+            <div class="photo-grid hidden" id="photoGrid">
+                <div class="photo-card" data-delay="0">
+                    <img src="assets/images/memories/photo1.jpeg" alt="Special Moment 1">
+                    <p class="caption">Pehla Pyaar, Pehli Mulaqat</p>
+                </div>
+                <div class="photo-card" data-delay="200">
+                    <img src="assets/images/memories/photo2.jpg" alt="Special Moment 2">
+                    <p class="caption">Dil Ki Dhadkan</p>
+                </div>
+                <div class="photo-card" data-delay="400">
+                    <img src="assets/images/memories/photo3.jpg" alt="Special Moment 3">
+                    <p class="caption">Tum Mere Liye, Main Tumhare Liye</p>
+                </div>
+                <div class="photo-card" data-delay="600">
+                    <img src="assets/images/memories/photo-4.jpeg" alt="Special Moment 4">
+                    <p class="caption">Meethe Pal</p>
+                </div>
+                <div class="photo-card" data-delay="800">
+                    <img src="assets/images/memories/photo5.jpeg" alt="Special Moment 5">
+                    <p class="caption">Anmol Lamhe</p>
+                </div>
+                <div class="photo-card" data-delay="1000">
+                    <img src="assets/images/memories/photo6.jpg" alt="Special Moment 6">
+                    <p class="caption">Pyaar Bhare Din</p>
+                </div>
+                <div class="photo-card" data-delay="1200">
+                    <img src="assets/images/memories/photo7.jpg" alt="Special Moment 7">
+                    <p class="caption">Khushiyon Ke Pal</p>
+                </div>
+                <div class="photo-card" data-delay="1400">
+                    <img src="assets/images/memories/photo8.jpg" alt="Special Moment 8">
+                    <p class="caption">Yaadgar Lamhe</p>
+                </div>
+                <div class="photo-card" data-delay="1600">
+                    <img src="assets/images/memories/photo9.jpeg" alt="Special Moment 9">
+                    <p class="caption">Humesha Ek Saath</p>
+                </div>
+                <div class="photo-card" data-delay="1800">
+                    <img src="assets/images/memories/photo10.jpeg" alt="Special Moment 10">
+                    <p class="caption">Jaadu Bhare Pal</p>
+                </div>
+                <div class="photo-card" data-delay="2000">
+                    <img src="assets/images/memories/photo11.jpeg" alt="Special Moment 11">
+                    <p class="caption">Khoobsurat Lamhe</p>
+                </div>
+                <!-- <div class="photo-card" data-delay="2200">
+                    <img src="assets/images/memories/photo12.jpeg" alt="Special Moment 12">
+                    <p class="caption">Dil Ki Baatein</p>
+                </div>
+                <div class="photo-card" data-delay="2400">
+                    <img src="assets/images/memories/photo13.jpeg" alt="Special Moment 13">
+                    <p class="caption">Rangeen Safar</p>
+                </div>
+                <div class="photo-card" data-delay="2600">
+                    <img src="assets/images/memories/photo14.jpeg" alt="Special Moment 14">
+                    <p class="caption">Pyaar Ki Kahani</p>
+                </div>
+                <div class="photo-card" data-delay="2800">
+                    <img src="assets/images/memories/photo15.jpeg" alt="Special Moment 15">
+                    <p class="caption">Khaas Pal</p>
+                </div>
+                <div class="photo-card" data-delay="3000">
+                    <img src="assets/images/memories/photo16.jpeg" alt="Special Moment 16">
+                    <p class="caption">Muskurate Pal</p>
+                </div>
+                <div class="photo-card" data-delay="3200">
+                    <img src="assets/images/memories/photo17.jpeg" alt="Special Moment 17">
+                    <p class="caption">Romantic Mulaqatein</p>
+                </div>
+                <div class="photo-card" data-delay="3400">
+                    <img src="assets/images/memories/photo18.jpeg" alt="Special Moment 18">
+                    <p class="caption">Sundar Safar</p>
+                </div>
+                <div class="photo-card" data-delay="3600">
+                    <img src="assets/images/memories/photo19.jpeg" alt="Special Moment 19">
+                    <p class="caption">Amar Prem</p>
+                </div>
+                <div class="photo-card" data-delay="3800">
+                    <img src="assets/images/memories/photo20.jpeg   " alt="Special Moment 20">
+                    <p class="caption">Saath Saath Humesha</p> -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Magic Mirror and Gift Section -->
+
+    <section id="magic-mirror" class="story-section">
+        <h2>Magic Mirror & Your Gift</h2>
+        <div class="wrapper" style="display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; max-width: 1200px; margin: 0 auto;">
+            <div class="container" style="width: 400px; background: white; padding: 20px; border-radius: 10px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); margin-bottom: 20px;">
+                <h3>Magic Mirror</h3>
+                <div class="input-box">
+                    <input type="text" id="nameInput" placeholder="Enter your name" style="padding: 10px; margin-top: 10px; border-radius: 5px; border: 1px solid #ddd;">
+                    <button onclick="showMirrorMessage()" style="background: #ff4d6d; color: white; padding: 10px; border: none; border-radius: 5px; margin-top: 10px; cursor: pointer;">Reveal</button>
+                </div>
+                <p id="mirror-message" style="display: none; margin-top: 20px; padding: 15px; background: #ff4d6d; color: white; border-radius: 5px; opacity: 0; transition: opacity 2s ease-in-out;"></p>
+            </div>
+            
+            <div class="container" style="width: 400px; background: white; padding: 20px; border-radius: 10px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); margin-bottom: 20px;">
+                <h3>Your Special Gift</h3>
+                <div class="input-box">
+                    <p>Click the button to reveal your gift! </p>
+                    <button onclick="revealSpecialGift()" style="background: #ff4d6d; color: white; padding: 10px; border: none; border-radius: 5px; margin-top: 10px; cursor: pointer;">Open Gift</button>
+                </div>
+                <p id="special-gift-message" style="display: none; margin-top: 20px; padding: 15px; background: #ff4d6d; color: white; border-radius: 5px; opacity: 0; transition: opacity 2s ease-in-out;"></p>
+            </div>
+
+            <!-- Valentine's Ask Section -->
+        
+            <div class="container" style="width: 400px; background: white; padding: 20px; border-radius: 20px; box-shadow: 0 0 20px rgba(255, 182, 193, 0.3); margin-bottom: 20px;">
+                <div class="valentine-container" style="text-align: center; padding: 20px;">
+                    <img src="assets/gif/adurable-cat.gif" alt="Cute Cat Asking" style="width: 250px; margin-bottom: 15px; border-radius: 15px;">
+                    <p class="text" style="font-size: 2em; font-weight: bold; color: #ff4d79; margin: 15px 0;">Will You Go Out With Me? 🥺</p>
+                    <div class="options" id="options" style="display: none; margin-top: 20px;">
+                        <button class="btn" id="yesButton" style="background: #ff4d6d; color: white; border: none; padding: 15px 40px; font-size: 20px; font-weight: bold; border-radius: 50px; cursor: pointer; transition: 0.3s; margin: 10px; box-shadow: 0 4px 15px rgba(255, 77, 109, 0.3);">Yes 💖</button>
+                        <button class="btn" id="noButton" style="background: #ff4d6d; color: white; border: none; padding: 15px 40px; font-size: 20px; font-weight: bold; border-radius: 50px; cursor: pointer; transition: 0.3s; margin: 10px; box-shadow: 0 4px 15px rgba(255, 77, 109, 0.3);">No 🥺</button>
+                    </div>
+                    <button class="btn" id="askButton" style="background: #ff4d6d; color: white; border: none; padding: 15px 40px; font-size: 20px; font-weight: bold; border-radius: 50px; cursor: pointer; transition: 0.3s; margin-top: 20px; box-shadow: 0 4px 15px rgba(255, 77, 109, 0.3);">Ask Now! 💝</button>
+                    <img id="valentineGif" alt="Cute Response" style="display: none; margin: 20px auto; width: 200px; border-radius: 15px;">
+                </div>
+            </div>
+        </div>
+
+    
+    </section>
+
+   
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Check if we should play music
+            if (localStorage.getItem('isMusicPlaying') === 'true') {
+                const bgMusic = document.getElementById('bgMusic');
+                if (bgMusic) {
+                    bgMusic.volume = 1;
+                    bgMusic.play().catch(error => {
+                        console.log('Music autoplay failed:', error);
+                    });
+                }
+            }
+            const containers = document.querySelectorAll('.flashcard-container');
+            const currentCardSpan = document.getElementById('current-card');
+            let currentIndex = 0;
+
+            // Show first card initially
+            containers[0].classList.add('active');
+
+            function showCard(index) {
+                containers.forEach(container => container.classList.remove('active'));
+                containers[index].classList.add('active');
+                currentCardSpan.textContent = index + 1;
+            }
+
+            // Removed navigation buttons
+        });
+
+        // Function to unlock vault and play music
+        function unlockVault() {
+            const password = document.getElementById('vaultPassword').value.toLowerCase().trim();
+            const vaultContent = document.querySelector('.vault-content');
+            const bgMusic = document.getElementById('bgMusic');
+            
+            if (password === 'atlas') {  // Replace 'atlas' with your actual password
+                // Play the background music
+                if (bgMusic) {
+                    bgMusic.volume = 1; // Set volume to 50%
+                    bgMusic.play().catch(error => {
+                        console.log('Music autoplay failed:', error);
+                    });
+                }
+                
+                // Show the vault content
+                if (vaultContent) {
+                    vaultContent.classList.remove('hidden');
+                    vaultContent.innerHTML = `
+                        <div class="love-letter">
+                            <h3>My Dearest Madam Ji </h3>
+                            <div class="letter-content hindi-text">
+                                <p>
+                                    "Aaj main aapse kuch special share karna chahta hoon. Us din jab pehli baar mile the, 
+                                    tab se lekar aaj tak ka safar kitna khoobsurat raha hai..."
+                                </p>
+                                <!-- Add more content here -->
+                            </div>
+                        </div>
+                    `;
+                }
+            } else {
+                alert('Incorrect password! Please try again.');
+            }
+        }
+    </script>
+    <script src="js/animations.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/gallery.js"></script>
+    <script>
+        // Music control
+        const musicToggle = document.querySelector('.music-toggle');
+        const bgMusic = document.getElementById('bgMusic');
+        
+        // Set default state to playing for new visitors
+        if (localStorage.getItem('isMusicPlaying') === null) {
+            localStorage.setItem('isMusicPlaying', 'true');
+        }
+        let isMusicPlaying = localStorage.getItem('isMusicPlaying') === 'true';
+
+        function updateMusicState(playing) {
+            isMusicPlaying = playing;
+            localStorage.setItem('isMusicPlaying', playing);
+            musicToggle.style.opacity = playing ? '1' : '0.5';
+            if (playing) {
+                bgMusic.play().catch(function(error) {
+                    console.log("Audio autoplay failed:", error);
+                    // Try again with user interaction
+                    document.body.addEventListener('click', function playOnClick() {
+                        bgMusic.play();
+                        document.body.removeEventListener('click', playOnClick);
+                    }, { once: true });
+                });
+            } else {
+                bgMusic.pause();
+            }
+        }
+
+        // Initialize music state
+        window.addEventListener('load', function() {
+            if (isMusicPlaying) {
+                bgMusic.play().catch(function(error) {
+                    console.log("Audio autoplay failed:", error);
+                    // Try again with user interaction
+                    document.body.addEventListener('click', function playOnClick() {
+                        bgMusic.play();
+                        document.body.removeEventListener('click', playOnClick);
+                    }, { once: true });
+                });
+                musicToggle.style.opacity = '1';
+            } else {
+                musicToggle.style.opacity = '0.5';
+            }
+        });
+
+        musicToggle.addEventListener('click', function() {
+            updateMusicState(!isMusicPlaying);
+        });
+
+        // Store current time before leaving page
+        window.addEventListener('beforeunload', function() {
+            localStorage.setItem('musicTime', bgMusic.currentTime);
+        });
+    </script>
+    <script>
+        function showMirrorMessage() {
+            let name = document.getElementById("nameInput").value;
+            let message = document.getElementById("mirror-message");
+            
+            if (name.trim() !== "") {
+                message.innerHTML = ` ${name}, you are the most special person in my life! `;
+                message.style.display = "block";
+                setTimeout(() => {
+                    message.style.opacity = "1";
+                }, 100);
+            } else {
+                alert("Please enter your name, my love! ");
+            }
+        }
+
+        function revealSpecialGift() {
+            let giftMessage = document.getElementById("special-gift-message");
+            giftMessage.innerHTML = " Surprise! You've received endless love and happiness! ";
+            giftMessage.style.display = "block";
+            setTimeout(() => {
+                giftMessage.style.opacity = "1";
+            }, 100);
+        }
+    </script>
+    <script>
+        // Valentine's Ask Button Logic
+        document.getElementById("askButton").addEventListener("click", function() {
+            document.getElementById("askButton").style.display = "none";
+            document.getElementById("options").style.display = "block";
+        });
+
+        document.getElementById("yesButton").addEventListener("click", function() {
+            document.querySelector(".text").innerHTML = "Hehehehe, I knew it! ";
+            document.getElementById("valentineGif").src = "assets/gif/yes.gif";
+            document.getElementById("valentineGif").style.display = "block";
+            document.getElementById("options").style.display = "none";
+        });
+
+        document.getElementById("noButton").addEventListener("click", function() {
+            document.querySelector(".text").innerHTML = "Still trying to say no? 😏";
+            document.getElementById("valentineGif").src = "assets/gif/no.gif";
+            document.getElementById("valentineGif").style.display = "block";
+            document.getElementById("options").style.display = "none";
+        });
+    </script>
+    <div class="next-button-container" style="text-align: center; padding: 4rem 0; margin: 2rem auto;">
+        <a href="javascript:void(0)" onclick="goToValentine()" class="next-button">
+            Next ❤️
+        </a>
+    </div>
+
+    <script>
+        function goToValentine() {
+            const bgMusic = document.getElementById('bgMusic');
+            const currentTime = bgMusic ? bgMusic.currentTime : 0;
+            const isPlaying = bgMusic ? !bgMusic.paused : true;
+            window.location.href = `valentine.html?t=${currentTime}&play=${isPlaying}`;
+        }
+    </script>
+</body>
+</html>

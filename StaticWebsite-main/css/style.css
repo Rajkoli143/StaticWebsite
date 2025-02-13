@@ -1,0 +1,1015 @@
+:root {
+    --primary-color: #FFB6C1;
+    --secondary-color: #FFE4E1;
+    --accent-color: #DDA0DD;
+    --gold-color: #FFD700;
+    --ivory-color: #FFF5F5;
+    --text-color: #4A4A4A;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    color: var(--text-color);
+    background-color: var(--ivory-color);
+    min-height: 100%;
+}
+
+/* Music Toggle */
+.music-toggle {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+    cursor: pointer;
+    background: rgba(255, 255, 255, 0.2);
+    padding: 15px;
+    border-radius: 50%;
+    backdrop-filter: blur(5px);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    transition: all 0.3s ease;
+}
+
+.music-toggle:hover {
+    transform: scale(1.1);
+}
+
+/* Music Toggle Styles */
+.music-toggle {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    width: 40px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 1000;
+}
+
+.music-toggle i {
+    color: white;
+    font-size: 20px;
+    transition: all 0.3s ease;
+}
+
+.music-toggle.hover {
+    transform: scale(1.1);
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.music-toggle.playing i {
+    animation: spin 2s linear infinite;
+}
+
+/* Pulse animation for music toggle */
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.7);
+        transform: scale(1);
+    }
+    70% {
+        box-shadow: 0 0 0 15px rgba(255, 255, 255, 0);
+        transform: scale(1.1);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
+        transform: scale(1);
+    }
+}
+
+.music-toggle.pulse-animation {
+    animation: pulse 2s infinite;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.music-toggle {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    width: 40px;
+    height: 40px;
+    background: linear-gradient(135deg, #ff6b6b, #ff8787);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 1000;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.music-toggle i {
+    color: white;
+    font-size: 1.2rem;
+    transition: all 0.3s ease;
+}
+
+.music-toggle.hover {
+    transform: scale(1.1);
+    box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
+}
+
+.music-toggle.playing {
+    background: linear-gradient(135deg, #ff8787, #ff6b6b);
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(255, 107, 107, 0.4);
+    }
+    70% {
+        box-shadow: 0 0 0 10px rgba(255, 107, 107, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(255, 107, 107, 0);
+    }
+}
+
+/* Music Controls */
+.music-controls {
+    margin-top: 20px;
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    justify-content: center;
+}
+
+.music-toggle {
+    background: var(--accent-color);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s ease;
+}
+
+.music-toggle:hover {
+    transform: scale(1.05);
+    background: var(--primary-color);
+}
+
+.volume-slider {
+    width: 100px;
+    height: 5px;
+    -webkit-appearance: none;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 5px;
+    outline: none;
+}
+
+.volume-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 15px;
+    height: 15px;
+    background: var(--accent-color);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.volume-slider::-webkit-slider-thumb:hover {
+    transform: scale(1.2);
+}
+
+/* Hero Section Styles */
+.hero {
+    position: relative;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    background: linear-gradient(135deg, #FFB6C1, #DDA0DD);
+}
+
+.hero-content {
+    text-align: center;
+    z-index: 2;
+    padding: 2rem;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(5px);
+    border-radius: 20px;
+    animation: fadeIn 1.5s ease-out;
+}
+
+.hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 3.5rem;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    margin-bottom: 1rem;
+}
+
+.hero .subtitle {
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.8rem;
+    color: white;
+    margin-bottom: 2rem;
+}
+
+.floating-hearts-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    pointer-events: none;
+    z-index: 9999;
+    overflow: hidden;
+}
+
+.heart {
+    position: fixed;
+    width: 20px;
+    height: 20px;
+    background: linear-gradient(135deg, #ff6b6b, #ff8787);
+    transform: rotate(45deg);
+    opacity: 0;
+    z-index: 9999;
+}
+
+.heart::before,
+.heart::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: inherit;
+    border-radius: 50%;
+}
+
+.heart::before {
+    left: -50%;
+}
+
+.heart::after {
+    top: -50%;
+}
+
+.heart.medium {
+    width: 30px;
+    height: 30px;
+}
+
+.heart.medium::before,
+.heart.medium::after {
+    width: 30px;
+    height: 30px;
+}
+
+.heart.large {
+    width: 40px;
+    height: 40px;
+}
+
+.heart.large::before,
+.heart.large::after {
+    width: 40px;
+    height: 40px;
+}
+
+.heart.floating {
+    animation: floatHeart var(--float-duration, 12s) var(--float-delay, 0s) ease-out forwards;
+}
+
+@keyframes floatHeart {
+    0% {
+        transform: translate(var(--start-x, 0), 100vh) rotate(45deg) scale(0.2);
+        opacity: 0;
+    }
+    10% {
+        opacity: 0.3;
+    }
+    50% {
+        opacity: 0.5;
+    }
+    90% {
+        opacity: 0.3;
+    }
+    100% {
+        transform: translate(calc(var(--start-x, 0) + 100px), -100px) rotate(45deg) scale(1);
+        opacity: 0;
+    }
+}
+
+.main-content {
+    position: relative;
+    z-index: 1;
+}
+
+.main-content,
+.hero-section,
+.about-section,
+.skills-section,
+.projects-section,
+.contact-section {
+    position: relative;
+    z-index: 1;
+}
+
+/* Header Styles */
+.background-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(255, 182, 193, 0.7), rgba(221, 160, 221, 0.4));
+    z-index: 1;
+}
+
+/* Navigation */
+nav {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 1rem;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin: 0;
+    padding: 0;
+}
+
+nav a {
+    color: var(--text-color);
+    text-decoration: none;
+    font-size: 1.1rem;
+    transition: color 0.3s ease;
+}
+
+nav a:hover {
+    color: var(--accent-color);
+}
+
+/* Responsive Navigation */
+@media (max-width: 768px) {
+    nav ul {
+        gap: 1rem;
+        flex-wrap: wrap;
+    }
+    
+    nav a {
+        font-size: 1rem;
+    }
+}
+
+/* Section Styles */
+section {
+    padding: 6rem 2rem;
+    min-height: 100vh;
+    background: var(--ivory-color);
+}
+
+h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 3rem;
+    text-align: center;
+    color: var(--primary-color);
+    margin-bottom: 3rem;
+}
+
+/* Timeline Styles */
+.timeline {
+    max-width: 1000px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 2px;
+    height: 100%;
+    background: var(--primary-color);
+}
+
+.memory-item {
+    width: 50%;
+    padding: 2rem;
+    position: relative;
+    transform: translateX(-100%);
+    opacity: 0;
+    transition: all 0.5s ease;
+}
+
+.memory-item.visible {
+    transform: translateX(0);
+    opacity: 1;
+}
+
+.memory-item:nth-child(even) {
+    margin-left: 50%;
+    transform: translateX(100%);
+}
+
+/* Vault Styles */
+.vault-container {
+    max-width: 850px;
+    margin: 0 auto;
+    background: white;
+    padding: 3rem;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.password-form {
+    text-align: center; 
+}
+
+.hint {
+    color: var(--primary-color);
+    font-style: italic;
+    margin-bottom: 1rem;
+}
+
+input[type="password"] {
+    width: 100%;
+    padding: 1rem;
+    margin: 1rem 0;
+    border: 2px solid var(--secondary-color);
+    border-radius: 5px;
+    font-size: 1.1rem;
+}
+
+button {
+    background: var(--accent-color);
+    color: white;
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 1.1rem;
+}
+
+button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+/* Remove unused sections */
+.cards-container,
+.date-builder,
+.activity-selector,
+.collect-btn,
+.lock-btn {
+    display: none;
+}
+
+/* Surprise Section */
+.surprise-btn {
+    display: block;
+    margin: 2rem auto;
+    background: var(--gold-color);
+    font-size: 1.3rem;
+}
+
+/* Surprise Section Styles */
+#surprise {
+    padding: 4rem 1rem;
+    text-align: center;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: white;
+}
+
+.surprise-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.gift-wrapper {
+    margin: 2rem 0;
+}
+
+.claim-btn {
+    background: white;
+    color: var(--accent-color);
+    border: none;
+    padding: 1rem 2rem;
+    font-size: 1.2rem;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 0 auto;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.claim-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+.claim-btn i {
+    font-size: 1.4rem;
+}
+
+.gift-content {
+    margin-top: 2rem;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.5s ease;
+}
+
+.gift-content.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Gift Message Styles */
+.special-message {
+    background: white;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    animation: slideUp 0.6s ease-out;
+}
+
+.gift-reveal {
+    margin: 2rem 0;
+    padding: 2rem;
+    background: linear-gradient(135deg, #ff6b6b, #ff8e8e);
+    border-radius: 10px;
+    color: white;
+}
+
+.gift-location {
+    font-size: 1.8rem;
+    font-weight: bold;
+    margin: 1rem 0;
+    font-family: 'Dancing Script', cursive;
+    color: white;
+}
+
+.gift-time {
+    font-size: 1.4rem;
+    margin: 1rem 0;
+    color: white;
+}
+
+.gift-note {
+    margin-top: 2rem;
+    font-style: italic;
+    color: var(--text-color);
+    font-size: 1.1rem;
+}
+
+/* Animation Canvas */
+#confettiCanvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 9999;
+}
+
+/* Love Story Section */
+.story-section {
+    padding: 4rem 1rem;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    position: relative;
+    overflow: hidden;
+}
+
+.story-container {
+    max-width: 600px;
+    margin: 0 auto;
+    position: relative;
+    padding: 2rem 0;
+}
+
+/* Timeline line */
+.story-container::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 2px;
+    height: 100%;
+    background: var(--accent-color);
+    opacity: 0.5;
+}
+
+.story-chapter {
+    margin: 2rem auto;
+    padding: 2rem;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    position: relative;
+    width: 80%;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    will-change: opacity, transform;
+}
+
+/* Chapter number circles */
+.story-chapter::before {
+    content: '';
+    position: absolute;
+    left: -40px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 30px;
+    height: 30px;
+    background: var(--accent-color);
+    border-radius: 50%;
+    border: 4px solid white;
+    z-index: 1;
+}
+
+.story-chapter h3 {
+    color: var(--accent-color);
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.story-chapter .hindi-text {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: var(--text-color);
+    text-align: center;
+    padding: 0 1rem;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.story-chapter:nth-child(1) { animation-delay: 0.3s; }
+.story-chapter:nth-child(2) { animation-delay: 0.6s; }
+.story-chapter:nth-child(3) { animation-delay: 0.9s; }
+.story-chapter:nth-child(4) { animation-delay: 1.2s; }
+.story-chapter:nth-child(5) { animation-delay: 1.5s; }
+.story-chapter:nth-child(6) { animation-delay: 1.8s; }
+.story-chapter:nth-child(7) { animation-delay: 2.1s; }
+.story-chapter:nth-child(8) { animation-delay: 2.4s; }
+.story-chapter:nth-child(9) { animation-delay: 2.7s; }
+
+/* Heart decorations */
+.story-chapter::after {
+    content: '❤️';
+    position: absolute;
+    right: -15px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.2rem;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .story-container {
+        max-width: 100%;
+        padding: 1rem;
+    }
+    
+    .story-chapter {
+        width: 90%;
+        margin: 1.5rem auto;
+    }
+    
+    .story-chapter::before {
+        left: -30px;
+        width: 24px;
+        height: 24px;
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2.5rem;
+    }
+    
+    nav ul {
+        flex-direction: column;
+        text-align: center;
+        gap: 1rem;
+    }
+    
+    .timeline::before {
+        left: 0;
+    }
+    
+    .memory-item {
+        width: 100%;
+        margin-left: 20px !important;
+    }
+}
+
+/* Utility Classes */
+.hidden {
+    display: none !important;
+}
+
+/* Gift Surprise Section */
+.gift-surprise {
+    padding: 3rem;
+    background: linear-gradient(135deg, var(--ivory-color), var(--secondary-color));
+}
+
+.photo-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    padding: 2rem;
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.photo-grid.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.photo-card {
+    position: relative;
+    background: white;
+    padding: 1rem;
+    border-radius: 10px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    transform-style: preserve-3d;
+    transform: perspective(1000px) rotateY(0deg);
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    opacity: 0;
+    transform: scale(0.8) translateY(30px);
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.photo-card.visible {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+}
+
+.photo-card:hover {
+    transform: perspective(1000px) rotateY(10deg) translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+}
+
+.photo-card img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 5px;
+    transform: translateZ(20px);
+}
+
+.photo-card .caption {
+    position: relative;
+    text-align: center;
+    margin-top: 1rem;
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.5rem;
+    color: var(--text-color);
+    transform: translateZ(30px);
+}
+
+.photo-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, rgba(255,255,255,0.2), transparent);
+    z-index: 1;
+    border-radius: 10px;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes explodeOut {
+    0% {
+        transform: scale(0) rotate(0deg);
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        transform: scale(1) rotate(var(--rotation));
+        opacity: 1;
+    }
+}
+
+.photo-card.explode {
+    animation: explodeOut 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+/* Gift Box Styles */
+.gift-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 3rem;
+    position: relative;
+}
+
+.gift-box {
+    position: relative;
+    width: 280px;
+    height: 280px;
+    margin-bottom: 4rem;
+    perspective: 1200px;
+    cursor: pointer;
+    filter: drop-shadow(0 15px 30px rgba(0, 0, 0, 0.2));
+}
+
+.gift-box::after {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    right: -10px;
+    bottom: -10px;
+    background: radial-gradient(circle at center, rgba(255, 105, 180, 0.2), transparent 70%);
+    animation: giftGlow 2s infinite;
+    pointer-events: none;
+}
+
+@keyframes giftGlow {
+    0%, 100% {
+        opacity: 0.5;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 0.8;
+        transform: scale(1.1);
+    }
+}
+
+.gift-lid {
+    position: absolute;
+    top: -30px;
+    width: 100%;
+    height: 60px;
+    background: linear-gradient(135deg, #FF1493, #FF69B4);
+    transform-origin: top;
+    transition: transform 1.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+    border-radius: 12px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+}
+
+.gift-box-body {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #FF1493, #DDA0DD);
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+    transform-style: preserve-3d;
+    transition: transform 1.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+    overflow: hidden;
+}
+
+.gift-box-body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 20px;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateX(-50%);
+}
+
+.gift-box-body::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    height: 20px;
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-50%);
+}
+
+.gift-box.open .gift-lid {
+    transform: rotateX(-130deg) scale(1.2);
+}
+
+.gift-box.open .gift-box-body {
+    transform: rotateX(15deg) scale(0.85);
+}
+
+/* Enhanced Button Animation */
+.claim-btn {
+    position: absolute;
+    bottom: -80px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 1.4rem 3rem;
+    background: linear-gradient(135deg, #FF1493, #FF69B4);
+    color: white;
+    border: none;
+    border-radius: 50px;
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.6rem;
+    cursor: pointer;
+    transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+    box-shadow: 0 10px 25px rgba(255, 105, 180, 0.4);
+}
+
+.claim-btn:hover {
+    transform: translateX(-50%) translateY(-8px);
+    box-shadow: 0 15px 30px rgba(255, 105, 180, 0.6);
+    background: linear-gradient(135deg, #FF1493, #FF1493);
+}
+
+.claim-btn i {
+    margin-left: 15px;
+    font-size: 1.3em;
+    animation: bounceIcon 1.2s infinite;
+}
+
+@keyframes bounceIcon {
+    0%, 100% {
+        transform: translateY(0) scale(1);
+    }
+    50% {
+        transform: translateY(-8px) scale(1.1);
+    }
+}
+
+/* Story Chapter Animations */
+.story-chapter {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+/* Ensure smooth scrolling for the entire page */
+html {
+    scroll-behavior: smooth;
+    height: 100%;
+}
+
+body {
+    min-height: 100%;
+}
+
+}
